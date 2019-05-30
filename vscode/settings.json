@@ -1,0 +1,18 @@
+// 将设置放入此文件中以覆盖默认设置
+{
+    // 控制字体大小。
+    "editor.fontSize": 20,
+    // 默认行尾字符。
+    "files.eol": "\n",
+    // 控制折行方式。
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 100,
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
+    "files.autoSave": "off",
+    "workbench.startupEditor": "newUntitledFile",
+    "git.path": "D:\\Program Files\\Git\\cmd\\git.exe",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "workbench.colorTheme": "Atom One Dark",
+    "shellformat.path": "C:\\bin\\shfmt.exe"
+}
