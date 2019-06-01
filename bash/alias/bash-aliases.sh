@@ -49,3 +49,8 @@ alias cdb='cd "`cat ~/.cdsave`"'  # cd back
 alias ping='ping -c 4'
 alias port='netstat -tulanp'
 alias myip='curl ifconfig.me'
+alias myips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
+
+alias svim='sudo vim'
+alias snano='sudo nano'
+alias pls='sudo $(fc -ln -1)'
