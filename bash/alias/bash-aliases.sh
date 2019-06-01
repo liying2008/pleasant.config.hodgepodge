@@ -4,7 +4,12 @@
 alias wttr='curl wttr.in/?lang=zh'
 
 alias vi='vim'
+# Print each PATH entry on a separate line
+alias path='echo -e ${PATH//:/\\n}'
 alias chux='chmod u+x'
+
+# Reload the shell (i.e. invoke as a login shell)
+alias reload='exec ${SHELL} -l'
 
 alias grep='grep -E --color'
 alias egrep='egrep --color=auto'
@@ -37,7 +42,7 @@ alias .....='cd ../../../../'
 alias .4='cd ../../../../'
 alias .5='cd ../../../../../'
 alias -- -='cd -'
-alias cds='echo "`pwd`" > ~/.cdsave'  #cd save : save where i am
+alias cds='echo "`pwd`" > ~/.cdsave'  # cd save
 alias cdb='cd "`cat ~/.cdsave`"'  # cd back
 
 # net

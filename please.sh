@@ -4,26 +4,18 @@
 DIR=$(dirname "$BASH_SOURCE")
 #echo $DIR
 
-# souce bash/alias/*.sh
-aliasdir="$DIR/bash/alias"
-if [ -d "$aliasdir" ]; then
-  for i in "$aliasdir"/*.sh; do
-    if [ -r $i ]; then
-      echo source $i
-      . $i
-    fi
-  done
-  unset i
-fi
+BASH_DIRS=(bash/alias bash/tool)
 
-# souce bash/tool/*.sh
-tooldir="$DIR/bash/tool"
-if [ -d "$tooldir" ]; then
-  for i in "$tooldir"/*.sh; do
-    if [ -r $i ]; then
-      echo source $i
-      . $i
-    fi
-  done
-  unset i
-fi
+for subdir in ${BASH_DIRS[*]}; do 
+  aliasdir="$DIR/$subdir"
+  if [ -d "$aliasdir" ]; then
+    for i in "$aliasdir"/*.sh; do
+      if [ -r $i ]; then
+        echo source $i
+        . $i
+      fi
+    done
+    unset i
+  fi
+  unset subdir
+done
