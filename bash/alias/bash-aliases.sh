@@ -46,7 +46,7 @@ alias cds='echo "`pwd`" > ~/.cdsave'  # cd save
 alias cdb='cd "`cat ~/.cdsave`"'  # cd back
 
 # net
-alias ping='ping -c 4'
+alias pong='ping -c 4'
 alias port='netstat -tulanp'
 alias myips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 
