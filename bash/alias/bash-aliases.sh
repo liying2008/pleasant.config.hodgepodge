@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # 天气查询
-alias wttr='curl wttr.in/?lang=zh'
+alias wttr='curl -s wttr.in/?lang=zh'
 
 alias vi='vim'
 # Print each PATH entry on a separate line
@@ -48,7 +48,6 @@ alias cdb='cd "`cat ~/.cdsave`"'  # cd back
 # net
 alias ping='ping -c 4'
 alias port='netstat -tulanp'
-alias myip='curl ifconfig.me'
 alias myips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 
 alias svim='sudo vim'
