@@ -9,7 +9,7 @@ DIR=$(dirname "$BASH_SOURCE")
 
 BASH_DIRS=(bash/alias bash/tool)
 
-for subdir in ${BASH_DIRS[*]}; do 
+for subdir in ${BASH_DIRS[*]}; do
   aliasdir="$DIR/$subdir"
   if [ -d "$aliasdir" ]; then
     for i in "$aliasdir"/*.sh; do
@@ -24,7 +24,7 @@ for subdir in ${BASH_DIRS[*]}; do
 done
 
 # install vim config
-chmod u+x "$DIR/vim/install.sh"
-"$DIR/vim/install.sh"
+#chmod u+x "$DIR/vim/install.sh"
+#"$DIR/vim/install.sh"
 
 unset PLEASANT_DEBUG
