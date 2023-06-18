@@ -5,7 +5,7 @@
 gprefs() {
   if [ $# -gt 2 ]; then
     echo "ERROR: Too many parameters."
-    exit 1
+    return 1
   elif [ $# -eq 2 ]; then
     local remote="$1"
     local branch="$2"
@@ -15,7 +15,7 @@ gprefs() {
     local remote_num=$(git remote | wc -l)
     if [ "$remote_num" -gt 1 ]; then
       echo "ERROR: Two parameters are required, remote and branch."
-      exit 1
+      return 1
     elif [ "$remote_num" -eq 1 ]; then
       local remote=$(git remote)
       local branch="$1"
@@ -23,11 +23,11 @@ gprefs() {
       git push "$remote" "$branch":refs/for/"$branch"
     else
       echo "ERROR: No remote added to the local repository."
-      exit 1
+      return 1
     fi
   else
     echo "ERROR: Missing parameters."
-    exit 1
+    return 1
   fi
 }
 
@@ -37,14 +37,14 @@ gprefs() {
 gprefsorigin() {
   if [ $# -gt 1 ]; then
     echo "ERROR: Too many parameters."
-    exit 1
+    return 1
   elif [ $# -eq 1 ]; then
     local branch="$1"
     [[ $PLEASANT_DEBUG == 1 ]] && echo "Executing: git push origin $branch:refs/for/$branch"
     git push origin "$branch":refs/for/"$branch"
   else
     echo "ERROR: Missing branch parameter."
-    exit 1
+    return 1
   fi
 }
 
@@ -56,6 +56,7 @@ gprefsorigin() {
 autogprefs() {
   if [ $# -gt 0 ]; then
     gprefs "$@"
+    return $?
   else
     local remote=
     local remote_num=$(git remote | wc -l)
@@ -71,13 +72,14 @@ autogprefs() {
 
     if [[ -n "$remote" && -n "$branch" ]]; then
       gprefs "$remote" "$branch"
+      return $?
     elif [[ -n "$remote" ]]; then
       # The current branch is not detected
       echo "ERROR: The branch is not detected and needs to be specified by the parameter."
-      exit 1
+      return 1
     else
       echo "ERROR: Two parameters are required, remote and branch."
-      exit 1
+      return 1
     fi
   fi
 }
@@ -89,6 +91,7 @@ autogprefs() {
 autogprefsorigin() {
   if [ $# -gt 0 ]; then
     gprefsorigin "$@"
+    return $?
   else
     local branch=
     local branch_num=$(git branch --no-color --show-current --no-abbrev | wc -l)
@@ -98,9 +101,11 @@ autogprefsorigin() {
 
     if [[ -n "$branch" ]]; then
       gprefsorigin "$branch"
+      return $?
     else
       # The current branch is not detected
       echo "ERROR: The branch is not detected and needs to be specified by the parameter."
-      exit 1
+      return 1
+    fi
   fi
 }
