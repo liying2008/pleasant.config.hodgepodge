@@ -11,8 +11,9 @@ if [ ! -f "$HOME/.bash_profile" ]; then
   cp -f "$BASE_DIR/git-windows/.bash_profile" "$HOME/.bash_profile"
 fi
 
-one_cmd="test -f $BASE_DIR/please.sh && . $BASE_DIR/please.sh"
-[[ $PLEASANT_DEBUG == 1 ]] && echo one_cmd=$one_cmd
+run_cmd="test -f $BASE_DIR/please.sh && . $BASE_DIR/please.sh"
+[[ $PLEASANT_DEBUG == 1 ]] && echo "Add run cmd: $run_cmd"
 
-echo -e "\n#Added by pleasant.config.hodgepodge\n$one_cmd" >> "$HOME/.bash_profile"
-echo "done."
+echo -e "\n#Added by pleasant.config.hodgepodge\n$run_cmd" >> "$HOME/.bash_profile"
+
+echo "Installation completed! Need to reload this session."
